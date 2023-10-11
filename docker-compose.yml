@@ -1,0 +1,20 @@
+version: '3'
+
+volumes:
+  elastic_data: {}
+
+services:
+  django:
+    container_name: p1
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    image: proje/deneme
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # env_file:
+    #   - ./.envs/.local
+    command: sh start.sh
+    tty: true
